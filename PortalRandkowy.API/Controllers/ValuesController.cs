@@ -16,6 +16,7 @@ namespace PortalRandkowy.API.Controllers
         private readonly DataContext _context;
         public ValuesController(DataContext context)
         {
+            this.context = context;
             _context = context;
 
         }
