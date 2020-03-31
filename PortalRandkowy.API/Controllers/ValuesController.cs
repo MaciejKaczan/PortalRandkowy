@@ -16,7 +16,6 @@ namespace PortalRandkowy.API.Controllers
         private readonly DataContext _context;
         public ValuesController(DataContext context)
         {
-            this.context = context;
             _context = context;
 
         }
@@ -61,6 +60,9 @@ namespace PortalRandkowy.API.Controllers
         public async Task<IActionResult> DeleteValue(int id)
         {
             var data = await _context.Values.FindAsync(id);
+            if(data == null){
+                return NoContent();
+            }
             _context.Values.Remove(data);
             await _context.SaveChangesAsync();
             return Ok(data);
